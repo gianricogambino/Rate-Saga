@@ -55,13 +55,37 @@
 			isa = PBXGroup;
 			children = (
 				70B0ED971FF2D24400EAACAD /* AppDelegate.swift */,
-				70B0ED991FF2D24400EAACAD /* ViewController.swift */,
-				70B0ED9B1FF2D24400EAACAD /* Main.storyboard */,
-				70B0ED9E1FF2D24400EAACAD /* Assets.xcassets */,
-				70B0EDA01FF2D24400EAACAD /* LaunchScreen.storyboard */,
+				70B0EDAB1FF2D27500EAACAD /* Controller */,
+				70B0EDAA1FF2D26E00EAACAD /* View */,
+				70B0EDA91FF2D25D00EAACAD /* Model */,
 				70B0EDA31FF2D24400EAACAD /* Info.plist */,
 			);
 			path = "Rate|Saga";
+			sourceTree = "<group>";
+		};
+		70B0EDA91FF2D25D00EAACAD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		70B0EDAA1FF2D26E00EAACAD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				70B0ED9B1FF2D24400EAACAD /* Main.storyboard */,
+				70B0ED9E1FF2D24400EAACAD /* Assets.xcassets */,
+				70B0EDA01FF2D24400EAACAD /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		70B0EDAB1FF2D27500EAACAD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				70B0ED991FF2D24400EAACAD /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,7 +305,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.gianricogambino.Rate-Saga";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -296,7 +320,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.gianricogambino.Rate-Saga";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
