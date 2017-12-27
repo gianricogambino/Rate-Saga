@@ -9,17 +9,11 @@
 import UIKit
 import ChameleonFramework
 
-class ViewController: UIViewController {
+class ViewController: UIModification {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Rende trasparente il navigationController
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = UIColor.clear
-        self.navigationController?.navigationBar.tintColor = UIColor.flatYellow()
+        transparentNavigationController()
     }
 
     override func didReceiveMemoryWarning() {

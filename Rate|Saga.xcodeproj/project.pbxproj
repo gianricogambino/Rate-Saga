@@ -16,6 +16,10 @@
 		70B0EDAD1FF2E9EC00EAACAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70B0EDAC1FF2E9EC00EAACAD /* GoogleService-Info.plist */; };
 		70B0EDAF1FF39C4D00EAACAD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B0EDAE1FF39C4D00EAACAD /* RegisterViewController.swift */; };
 		70B0EDB11FF3A68800EAACAD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B0EDB01FF3A68800EAACAD /* LoginViewController.swift */; };
+		70B0EDB21FF3DD7D00EAACAD /* ChameleonFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70B0EDB41FF3DD7D00EAACAD /* ChameleonFramework.framework */; };
+		70B0EDB31FF3DD7D00EAACAD /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70B0EDB51FF3DD7D00EAACAD /* SVProgressHUD.framework */; };
+		70B0EDB71FF3DE1800EAACAD /* SagaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B0EDB61FF3DE1800EAACAD /* SagaTableViewController.swift */; };
+		70B0EDB91FF3EA9C00EAACAD /* UIModification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B0EDB81FF3EA9C00EAACAD /* UIModification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +35,10 @@
 		70B0EDAC1FF2E9EC00EAACAD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		70B0EDAE1FF39C4D00EAACAD /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		70B0EDB01FF3A68800EAACAD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		70B0EDB41FF3DD7D00EAACAD /* ChameleonFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ChameleonFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		70B0EDB51FF3DD7D00EAACAD /* SVProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		70B0EDB61FF3DE1800EAACAD /* SagaTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SagaTableViewController.swift; sourceTree = "<group>"; };
+		70B0EDB81FF3EA9C00EAACAD /* UIModification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIModification.swift; sourceTree = "<group>"; };
 		FAD3357A66AA165BD9A2CCF9 /* Pods_Rate_Saga.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rate_Saga.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -39,6 +47,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70B0EDB21FF3DD7D00EAACAD /* ChameleonFramework.framework in Frameworks */,
+				70B0EDB31FF3DD7D00EAACAD /* SVProgressHUD.framework in Frameworks */,
 				5E9D03EC1203C5CAC32298A4 /* Pods_Rate_Saga.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,9 +116,11 @@
 		70B0EDAB1FF2D27500EAACAD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				70B0EDB81FF3EA9C00EAACAD /* UIModification.swift */,
 				70B0ED991FF2D24400EAACAD /* ViewController.swift */,
 				70B0EDAE1FF39C4D00EAACAD /* RegisterViewController.swift */,
 				70B0EDB01FF3A68800EAACAD /* LoginViewController.swift */,
+				70B0EDB61FF3DE1800EAACAD /* SagaTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -116,6 +128,8 @@
 		E26B043C1F418F879399EEA0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				70B0EDB41FF3DD7D00EAACAD /* ChameleonFramework.framework */,
+				70B0EDB51FF3DD7D00EAACAD /* SVProgressHUD.framework */,
 				FAD3357A66AA165BD9A2CCF9 /* Pods_Rate_Saga.framework */,
 			);
 			name = Frameworks;
@@ -261,8 +275,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70B0EDB71FF3DE1800EAACAD /* SagaTableViewController.swift in Sources */,
 				70B0EDB11FF3A68800EAACAD /* LoginViewController.swift in Sources */,
 				70B0EDAF1FF39C4D00EAACAD /* RegisterViewController.swift in Sources */,
+				70B0EDB91FF3EA9C00EAACAD /* UIModification.swift in Sources */,
 				70B0ED9A1FF2D24400EAACAD /* ViewController.swift in Sources */,
 				70B0ED981FF2D24400EAACAD /* AppDelegate.swift in Sources */,
 			);
