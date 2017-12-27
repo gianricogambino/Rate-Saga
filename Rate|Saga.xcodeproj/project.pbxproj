@@ -15,6 +15,7 @@
 		70B0EDA21FF2D24400EAACAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70B0EDA01FF2D24400EAACAD /* LaunchScreen.storyboard */; };
 		70B0EDAD1FF2E9EC00EAACAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70B0EDAC1FF2E9EC00EAACAD /* GoogleService-Info.plist */; };
 		70B0EDAF1FF39C4D00EAACAD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B0EDAE1FF39C4D00EAACAD /* RegisterViewController.swift */; };
+		70B0EDB11FF3A68800EAACAD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B0EDB01FF3A68800EAACAD /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		70B0EDA31FF2D24400EAACAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70B0EDAC1FF2E9EC00EAACAD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		70B0EDAE1FF39C4D00EAACAD /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		70B0EDB01FF3A68800EAACAD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FAD3357A66AA165BD9A2CCF9 /* Pods_Rate_Saga.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rate_Saga.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 			children = (
 				70B0ED991FF2D24400EAACAD /* ViewController.swift */,
 				70B0EDAE1FF39C4D00EAACAD /* RegisterViewController.swift */,
+				70B0EDB01FF3A68800EAACAD /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70B0EDB11FF3A68800EAACAD /* LoginViewController.swift in Sources */,
 				70B0EDAF1FF39C4D00EAACAD /* RegisterViewController.swift in Sources */,
 				70B0ED9A1FF2D24400EAACAD /* ViewController.swift in Sources */,
 				70B0ED981FF2D24400EAACAD /* AppDelegate.swift in Sources */,
