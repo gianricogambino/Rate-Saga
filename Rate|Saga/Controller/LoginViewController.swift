@@ -21,10 +21,6 @@ class LoginViewController: UIModification {
         super.viewDidLoad()
         transparentNavigationController()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     // MARK: - Navigation
     @IBAction func loginButtonPressed(_ sender: UIButton) {

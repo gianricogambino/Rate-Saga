@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5E9D03EC1203C5CAC32298A4 /* Pods_Rate_Saga.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD3357A66AA165BD9A2CCF9 /* Pods_Rate_Saga.framework */; };
+		70082C501FF50D58004B7F03 /* SagaMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70082C4F1FF50D58004B7F03 /* SagaMovie.swift */; };
+		70082C521FF556E5004B7F03 /* SagaList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70082C511FF556E5004B7F03 /* SagaList.swift */; };
+		70082C541FF6362C004B7F03 /* SagaMoviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70082C531FF6362C004B7F03 /* SagaMoviesTableViewController.swift */; };
+		70AC1D0D1FF69493009946CD /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AC1D0C1FF69493009946CD /* LogoutViewController.swift */; };
 		70B0ED981FF2D24400EAACAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B0ED971FF2D24400EAACAD /* AppDelegate.swift */; };
 		70B0ED9A1FF2D24400EAACAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B0ED991FF2D24400EAACAD /* ViewController.swift */; };
 		70B0ED9D1FF2D24400EAACAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70B0ED9B1FF2D24400EAACAD /* Main.storyboard */; };
@@ -25,6 +29,10 @@
 /* Begin PBXFileReference section */
 		3F77FD27F94B7B71A1002729 /* Pods-Rate|Saga.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rate|Saga.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rate|Saga/Pods-Rate|Saga.debug.xcconfig"; sourceTree = "<group>"; };
 		6CB67F17160E9E85E5110003 /* Pods-Rate|Saga.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rate|Saga.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rate|Saga/Pods-Rate|Saga.release.xcconfig"; sourceTree = "<group>"; };
+		70082C4F1FF50D58004B7F03 /* SagaMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SagaMovie.swift; sourceTree = "<group>"; };
+		70082C511FF556E5004B7F03 /* SagaList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SagaList.swift; sourceTree = "<group>"; };
+		70082C531FF6362C004B7F03 /* SagaMoviesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SagaMoviesTableViewController.swift; sourceTree = "<group>"; };
+		70AC1D0C1FF69493009946CD /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		70B0ED941FF2D24400EAACAD /* Rate|Saga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rate|Saga.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70B0ED971FF2D24400EAACAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70B0ED991FF2D24400EAACAD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +107,8 @@
 		70B0EDA91FF2D25D00EAACAD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				70082C4F1FF50D58004B7F03 /* SagaMovie.swift */,
+				70082C511FF556E5004B7F03 /* SagaList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -121,6 +131,8 @@
 				70B0EDAE1FF39C4D00EAACAD /* RegisterViewController.swift */,
 				70B0EDB01FF3A68800EAACAD /* LoginViewController.swift */,
 				70B0EDB61FF3DE1800EAACAD /* SagaTableViewController.swift */,
+				70082C531FF6362C004B7F03 /* SagaMoviesTableViewController.swift */,
+				70AC1D0C1FF69493009946CD /* LogoutViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -279,8 +291,12 @@
 				70B0EDB11FF3A68800EAACAD /* LoginViewController.swift in Sources */,
 				70B0EDAF1FF39C4D00EAACAD /* RegisterViewController.swift in Sources */,
 				70B0EDB91FF3EA9C00EAACAD /* UIModification.swift in Sources */,
+				70082C501FF50D58004B7F03 /* SagaMovie.swift in Sources */,
 				70B0ED9A1FF2D24400EAACAD /* ViewController.swift in Sources */,
 				70B0ED981FF2D24400EAACAD /* AppDelegate.swift in Sources */,
+				70082C541FF6362C004B7F03 /* SagaMoviesTableViewController.swift in Sources */,
+				70AC1D0D1FF69493009946CD /* LogoutViewController.swift in Sources */,
+				70082C521FF556E5004B7F03 /* SagaList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

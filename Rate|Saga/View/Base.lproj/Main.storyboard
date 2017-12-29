@@ -80,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="857" y="196"/>
+            <point key="canvasLocation" x="224.80000000000001" y="195.6521739130435"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="ufQ-dx-Qjq">
@@ -138,7 +138,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login-title" translatesAutoresizingMaskIntoConstraints="NO" id="E7m-TM-sBf">
-                                <rect key="frame" x="0.0" y="64" width="375" height="125"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="126"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -177,12 +177,12 @@
                     <connections>
                         <outlet property="emailTextField" destination="yOk-W4-n5w" id="wh3-Cb-iDD"/>
                         <outlet property="passwordtextField" destination="H2N-z0-qaJ" id="177-Ip-tzE"/>
-                        <segue destination="3lc-mb-62g" kind="show" identifier="gotoSagaSelector" id="6Vq-nO-5cR"/>
+                        <segue destination="gAF-N4-SnC" kind="show" identifier="gotoSagaSelector" id="jrK-QQ-RyQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vi3-4y-MJS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1796" y="-155.17241379310346"/>
+            <point key="canvasLocation" x="1380" y="-213"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="GmU-U6-hvc">
@@ -267,27 +267,47 @@
                     <connections>
                         <outlet property="emailTextField" destination="84s-vG-eAX" id="vI2-O8-ewX"/>
                         <outlet property="passwordTextField" destination="G5n-pb-tVq" id="pPO-19-Dym"/>
-                        <segue destination="3lc-mb-62g" kind="show" identifier="gotoSagaSelector" id="ZwM-yY-pKr"/>
+                        <segue destination="gAF-N4-SnC" kind="show" identifier="gotoSagaSelector" id="FBw-5q-lQS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="44g-Yh-hmp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1796" y="572.56371814092961"/>
+            <point key="canvasLocation" x="1380" y="670"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Logout-->
+        <scene sceneID="GbK-gX-cLh">
+            <objects>
+                <viewController id="1eZ-mN-kSV" customClass="LogoutViewController" customModule="Rate_Saga" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fzo-Uq-HYX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="e5y-GG-iD3"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Logout" id="WaE-6C-12P"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="logoutButton" destination="WaE-6C-12P" id="tU3-rp-G9H"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o3E-aF-X88" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3623" y="-554"/>
+        </scene>
+        <!--Saga|List-->
         <scene sceneID="ywI-XL-M1H">
             <objects>
-                <tableViewController id="3lc-mb-62g" sceneMemberID="viewController">
+                <tableViewController id="3lc-mb-62g" customClass="SagaTableViewController" customModule="Rate_Saga" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CGS-tm-pXQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="SUM-C3-lFY">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SagaCell" id="SUM-C3-lFY">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SUM-C3-lFY" id="ZXI-8I-w4Y">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -297,16 +317,101 @@
                             <outlet property="delegate" destination="3lc-mb-62g" id="PGl-r8-nQr"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Saga|List" id="45q-va-Jw9"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="a2F-Yn-DfK" kind="show" identifier="gotoSagaMovies" id="pAc-tv-9MJ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6T-Eu-abb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2591" y="196"/>
+            <point key="canvasLocation" x="3623" y="196"/>
+        </scene>
+        <!--Saga|Stats-->
+        <scene sceneID="VfB-xI-Kaf">
+            <objects>
+                <tableViewController id="cHu-Gm-zta" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="peL-VC-IaI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SagaCell" id="R9M-py-E09">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R9M-py-E09" id="4de-r7-T84">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cHu-Gm-zta" id="Zc6-24-XsZ"/>
+                            <outlet property="delegate" destination="cHu-Gm-zta" id="26R-gX-pu8"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Saga|Stats" id="pZv-95-hfM"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ws1-dU-mkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3622" y="993"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="hD4-u5-ajw">
+            <objects>
+                <tableViewController id="a2F-Yn-DfK" customClass="SagaMoviesTableViewController" customModule="Rate_Saga" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fpO-3z-xV2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SagaCell" id="rjF-ys-UNg">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rjF-ys-UNg" id="OUv-fC-nNY">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="a2F-Yn-DfK" id="vSI-73-Chp"/>
+                            <outlet property="delegate" destination="a2F-Yn-DfK" id="h14-m9-E4f"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="TDc-0r-cyn"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xrO-VU-dc0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4530" y="196"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="os0-lx-n42">
+            <objects>
+                <tabBarController id="gAF-N4-SnC" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fEZ-Hh-6KU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="3lc-mb-62g" kind="relationship" relationship="viewControllers" id="hyC-hq-pK5"/>
+                        <segue destination="cHu-Gm-zta" kind="relationship" relationship="viewControllers" id="tJ5-1c-XuU"/>
+                        <segue destination="1eZ-mN-kSV" kind="relationship" relationship="viewControllers" id="34X-aU-KNP"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nxl-Eo-BFY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2673" y="196"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jcV-Gr-IFl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XZ3-OW-o88" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xfW-ww-Om7">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -321,17 +426,17 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xlq-Ab-7iR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-31" y="196"/>
+            <point key="canvasLocation" x="-678" y="196"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Login-title" width="372" height="125"/>
-        <image name="Register" width="406" height="126"/>
+        <image name="Login-title" width="372" height="126"/>
+        <image name="Register" width="405" height="126"/>
         <image name="app-title" width="413" height="183"/>
         <image name="starwars-mask" width="414" height="736"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZwM-yY-pKr"/>
-        <segue reference="q2O-Gn-ufI"/>
+        <segue reference="FBw-5q-lQS"/>
+        <segue reference="NQS-t3-VsO"/>
     </inferredMetricsTieBreakers>
 </document>

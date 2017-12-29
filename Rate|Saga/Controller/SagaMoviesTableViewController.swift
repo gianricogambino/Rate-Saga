@@ -1,78 +1,63 @@
 //
-//  SagaTableViewController.swift
+//  SagaMoviesTableViewController.swift
 //  Rate|Saga
 //
-//  Created by gianrico on 27/12/17.
+//  Created by gianrico on 29/12/17.
 //  Copyright © 2017 gianrico. All rights reserved.
 //
 
 import UIKit
-import Firebase
-import ChameleonFramework
 
-class SagaTableViewController: UITableViewController {
+class SagaMoviesTableViewController: UITableViewController {
     
-    //let sagas = ["Star Wars","Harry Potter","Back to the Future","Indiana Jones"]
-    let sagaListRef:DatabaseReference = Database.database().reference().child("sagasList")
-    let sagaRef:DatabaseReference = Database.database().reference().child("sagas")
-    
-    var sagaListItems:[SagaList] = []
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //codice tratto da testFirebase di HidranArias
-        //listener asincrono
-        sagaListRef.observe(.value) { (dataSnapShot) in
-            self.sagaListItems.removeAll()
-            for item in dataSnapShot.children {
-                let sagaList = item as! DataSnapshot
-                let saga = SagaList(sagaName: sagaList)
-                self.sagaListItems.append(saga)
-            }
-            self.tableView.reloadData()
+    var selectedSaga: SagaList? {
+        didSet {
+            loadMovies()
         }
     }
 
-    // MARK: - Tableview data source
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return sagaListItems.count
-        
+        return 0
     }
     
+    //MARK: - Model manipulation data methods
+    
+    func loadMovies() {
+        print(selectedSaga?.saga as Any)
+    }
+
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SagaCell", for: indexPath)
-        let saga = sagaListItems[indexPath.row]
-        cell.textLabel?.text = saga.saga
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
 
         return cell
     }
-    
-    //MARK: - Tableview delegate methods
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "gotoSagaMovies", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! SagaMoviesTableViewController
-        if let indexPath = tableView.indexPathForSelectedRow{
-            destinationVC.selectedSaga = sagaListItems[indexPath.row]
-        }
-    }
-    
-    //MARK: - Tabbar Methods
-    
-    
-    
-    
+    */
 
     /*
     // Override to support conditional editing of the table view.
