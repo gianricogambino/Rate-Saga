@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import Firebase
 
 class SagaMoviesTableViewController: UITableViewController {
+    
+    let sagaMovieRef:DatabaseReference = Database.database().reference().child("sagas")
+    var movieListItems:[SagaMovie] = []
     
     var selectedSaga: SagaList? {
         didSet {
@@ -18,35 +22,45 @@ class SagaMoviesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return movieListItems.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SagaCell", for: indexPath)
+        let movie = movieListItems[indexPath.row]
+        cell.textLabel?.text = movie.title
+        return cell
     }
     
     //MARK: - Model manipulation data methods
     
     func loadMovies() {
-        print(selectedSaga?.saga as Any)
+        sagaMovieRef.observe(.value) { (dataSnapshot) in
+            self.movieListItems.removeAll()
+            for item in dataSnapshot.children {
+                let movieList = item as! DataSnapshot
+                let movie = SagaMovie(sagaItem: movieList)
+                print("controllo selezione dati film")
+                print(self.selectedSaga?.saga as Any)
+                print(movie.saga)
+                if movie.saga == self.selectedSaga?.saga {
+                    self.movieListItems.append(movie)
+                    print(self.movieListItems)
+                }
+            }
+            self.tableView.reloadData()
+        }
     }
 
     /*

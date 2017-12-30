@@ -14,7 +14,6 @@ class SagaTableViewController: UITableViewController {
     
     //let sagas = ["Star Wars","Harry Potter","Back to the Future","Indiana Jones"]
     let sagaListRef:DatabaseReference = Database.database().reference().child("sagasList")
-    let sagaRef:DatabaseReference = Database.database().reference().child("sagas")
     
     var sagaListItems:[SagaList] = []
 
