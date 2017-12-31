@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class SagaMoviesTableViewController: UITableViewController {
+class SagaMoviesTableViewController: UITableViewModification {
     
     let sagaMovieRef:DatabaseReference = Database.database().reference().child("sagas")
     var movieListItems:[SagaMovie] = []
@@ -24,6 +24,7 @@ class SagaMoviesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        transparentBackgroundController()
     }
 
     // MARK: - Table view data source
@@ -39,7 +40,7 @@ class SagaMoviesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SagaCell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         let movie = movieListItems[indexPath.row]
         cell.textLabel?.text = movie.title
         return cell
