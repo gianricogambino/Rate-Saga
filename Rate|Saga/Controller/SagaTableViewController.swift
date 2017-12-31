@@ -12,14 +12,17 @@ import ChameleonFramework
 
 class SagaTableViewController: UITableViewController {
     
-    //let sagas = ["Star Wars","Harry Potter","Back to the Future","Indiana Jones"]
+    @IBOutlet weak var navBarTitle: UINavigationItem!
+    
     let sagaListRef:DatabaseReference = Database.database().reference().child("sagasList")
     
     var sagaListItems:[SagaList] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navBarTitle.title = "Saga|List"
+
+//        print("inizio caricamento saghe")
         //codice tratto da testFirebase di HidranArias
         //listener asincrono
         sagaListRef.observe(.value) { (dataSnapShot) in
@@ -28,6 +31,7 @@ class SagaTableViewController: UITableViewController {
                 let sagaList = item as! DataSnapshot
                 let saga = SagaList(sagaName: sagaList)
                 self.sagaListItems.append(saga)
+//                print("ecco la saga \(saga.saga)")
             }
             self.tableView.reloadData()
         }

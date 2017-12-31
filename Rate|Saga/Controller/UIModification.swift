@@ -32,6 +32,7 @@ class UIModification: UIViewController {
         navView.backgroundColor = nil
         navBar.tintColor = UIColor.flatYellow()
         navBar.barTintColor = UIColor.clear
+        setToolbarItems(toolbarItems, animated: true)
         
     }
 
