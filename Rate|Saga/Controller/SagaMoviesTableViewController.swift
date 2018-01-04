@@ -11,13 +11,19 @@ import Firebase
 
 class SagaMoviesTableViewController: UITableViewModification {
     
+    // usaed for retrieve movie data
     let sagaMovieRef:DatabaseReference = Database.database().reference().child("sagas")
+    // used to count how many movies are present in the selected saga
+    var countMovie:Int = 0
+    // array of Movie of class SagaMovie
     var movieListItems:[SagaMovie] = []
-    
+    // IBOutlet unusefull - delete?
     @IBOutlet weak var navBarTitle: UINavigationItem!
     
+    //retrieve selected saga from class SagaTableViewControll
     var selectedSaga: SagaList? {
         didSet {
+            // 1 - launch loadMovies method to create the list
             loadMovies()
         }
     }
@@ -27,7 +33,8 @@ class SagaMoviesTableViewController: UITableViewModification {
         transparentBackgroundController()
     }
 
-    // MARK: - Table view data source
+    // MARK: - Tableview datasource
+    // 3 - using the step 2 data in cell creation
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -40,23 +47,82 @@ class SagaMoviesTableViewController: UITableViewModification {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // inherit from UITableViewModification
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        //data modification on the loadMovie() method
         let movie = movieListItems[indexPath.row]
+        print(movie)
         cell.textLabel?.text = movie.title
+        cell.detailTextLabel?.text = String(movie.votes)
+        
+        //set the last item in the array equal to the number of element -1
+        //so it's possible to verify  when the last cell is created  in order
+        //to launch the populateVotesArray() Method
+        let endIndex = movieListItems.endIndex-1
+        if endIndex == indexPath.row  {
+            countMovie = movieListItems.count
+        }
         return cell
     }
     
+    // MARK: - voting methods
+    
+    // 4 - user pressed VOTE button
+    @IBAction func voteButtonPressed(_ sender: UIBarButtonItem) {
+        
+        // if isEditing is true isn't possible to vote the guard statement checks that condition
+        guard tableView.isEditing else {
+            
+            for i in 0...(countMovie - 1) {
+                //vote = numberOfElements - numberInThearray
+                let expressedVote = countMovie - i
+                //new sum of the previous values with the newone
+                movieListItems[i].votes = movieListItems[i].votes + expressedVote
+            }
+            //invoke the saveVotes() methods passing movieListItems array
+            saveVotes(movieItem: movieListItems)
+            return
+        }
+    }
+    
+    
+    //MARK: - editing cell methods
+    
+    @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
+        tableView.isEditing = !tableView.isEditing
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.none
+    }
+
+    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    // 6 - Editing methods to move up and down the rows
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let moveCell = movieListItems[sourceIndexPath.row]
+        movieListItems.remove(at: sourceIndexPath.row)
+        movieListItems.insert(moveCell, at: destinationIndexPath.row)
+    }
+    
     //MARK: - Model manipulation data methods
+    
+    // 2 - creation of the array containing the database info regarding the movies of the selectedSaga
     
     func loadMovies() {
         sagaMovieRef.observe(.value) { (dataSnapshot) in
             self.movieListItems.removeAll()
             for item in dataSnapshot.children {
                 let movieList = item as! DataSnapshot
-                let movie = SagaMovie(sagaItem: movieList)
-//                print("controllo selezione dati film")
-//                print(self.selectedSaga?.saga as Any)
-//                print(movie.saga)
+                let movie = SagaMovie(sagaItems: movieList)
+                // the if statement tells tht only the movies corresponding to the selectedSaga
+                // will be visualized and appendend to the movieListItem array
                 if movie.saga == self.selectedSaga?.saga {
                     self.movieListItems.append(movie)
                 }
@@ -65,4 +131,50 @@ class SagaMoviesTableViewController: UITableViewModification {
             self.navBarTitle.title = self.selectedSaga?.saga
         }
     }
+    
+    // 5 - saving methods
+    
+    func saveVotes(movieItem:[SagaMovie]) {
+        
+        for i in 0...(countMovie - 1) {
+            //dictionary containing every single element in the node of FB db
+            let elements = ["name":movieItem[i].name,"saga":movieItem[i].saga,"title":movieItem[i].title,"votes":movieItem[i].votes] as [String : Any]
+            //update string in which we modify the node with the description equal to the .name property
+            sagaMovieRef.child(movieItem[i].name).updateChildValues(elements)
+        }
+        
+        
+//        let elements = ["name":"Back to the Future","saga":"Back to the Future","title":"Back to the Future","votes":100] as [String : Any]
+//        sagaMovieRef.child("Back to the Future I").updateChildValues(elements)
+        
+        
+//        let key = ref.child("posts").childByAutoId().key
+//        let post = ["uid": userID,
+//                    "author": username,
+//                    "title": title,
+//                    "body": body]
+//        let childUpdates = ["/posts/\(key)": post,
+//                            "/user-posts/\(userID)/\(key)/": post]
+//        ref.updateChildValues(childUpdates)
+        
+        
+//
+//
+//            //TODO: Send the message to Firebase and save it in our database
+//
+//            let messageDB = Database.database().reference().child("Messages")
+//            let messageDictionary = ["Sender":Auth.auth().currentUser?.email,"MessageBody":messageTextfield.text]
+//            messageDB.childByAutoId().setValue(messageDictionary) {
+//                (error, reference) in
+//                if error != nil {
+//                    print(error!)
+//                } else {
+//                    print("message saved successfully")
+//                    self.messageTextfield.isEnabled = true
+//                    self.sendButton.isEnabled = true
+//                    self.messageTextfield.text = ""
+//                }
+//            }
+    }
+    
 }
