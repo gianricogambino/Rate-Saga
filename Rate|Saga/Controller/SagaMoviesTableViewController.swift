@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import ChameleonFramework
 
 class SagaMoviesTableViewController: UITableViewModification {
     
@@ -19,6 +20,8 @@ class SagaMoviesTableViewController: UITableViewModification {
     var movieListItems:[SagaMovie] = []
     // IBOutlet unusefull - delete?
     @IBOutlet weak var navBarTitle: UINavigationItem!
+    @IBOutlet weak var voteButton: UIBarButtonItem!
+    @IBOutlet weak var madeYourListButton: UIBarButtonItem!
     
     //retrieve selected saga from class SagaTableViewControll
     var selectedSaga: SagaList? {
@@ -90,6 +93,13 @@ class SagaMoviesTableViewController: UITableViewModification {
     
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
         tableView.isEditing = !tableView.isEditing
+        if tableView.isEditing {
+            voteButton.tintColor = UIColor.flatGray()
+            madeYourListButton.title = "Done"
+        } else {
+            voteButton.tintColor = UIColor(hexString: "FFD65A")
+            madeYourListButton.title = "MadeYourList"
+        }
     }
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
