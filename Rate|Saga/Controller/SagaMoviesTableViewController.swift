@@ -93,6 +93,8 @@ class SagaMoviesTableViewController: UITableViewModification {
     
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
         tableView.isEditing = !tableView.isEditing
+        
+        // modifify the top buttons on the isEditing status
         if tableView.isEditing {
             voteButton.tintColor = UIColor.flatGray()
             madeYourListButton.title = "Done"

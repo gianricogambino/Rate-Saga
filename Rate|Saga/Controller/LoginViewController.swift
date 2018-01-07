@@ -19,16 +19,33 @@ class LoginViewController: UIModification {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupResponders(email: emailTextField, password: passwordtextField)
         transparentNavigationController()
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Try to find next responder
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+            loginRateSaga()
+        }
+        // Do not add a line break
+        return true
+    }
+    
     // MARK: - Navigation
-    @IBAction func loginButtonPressed(_ sender: UIButton) {
+    @IBAction func loginButtonPressed(_ sender: Any) {
+        loginRateSaga()
+    }
+    
+    func loginRateSaga () {
         SVProgressHUD.show()
         
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordtextField.text!) { (user, error) in
             if error != nil {
-                print("PRIMO CONTROLLO - LoginViewController - Errore in fase di login: \(String(describing: error))")
                 SVProgressHUD.dismiss()
             } else {
                 SVProgressHUD.dismiss()
@@ -36,7 +53,5 @@ class LoginViewController: UIModification {
             }
         }
     }
-    
-    
 
 }

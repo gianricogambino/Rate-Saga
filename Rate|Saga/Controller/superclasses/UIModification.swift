@@ -8,12 +8,19 @@
 
 import Foundation
 import UIKit
+import Firebase
+import SVProgressHUD
 
-class UIModification: UIViewController {
+class UIModification: UIViewController, UITextFieldDelegate {
+    
+    var email:UITextField!
+    var password:UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    //MARK: - NavigationController UI Methods
     
     func transparentNavigationController() {
         
@@ -25,7 +32,7 @@ class UIModification: UIViewController {
             fatalError("Navigation controller view does not exists")
         }
         
-        // Rende trasparente il navigationController
+        // Made navigationController transparent
         navBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navBar.shadowImage = UIImage()
         navBar.isTranslucent = true
@@ -34,6 +41,17 @@ class UIModification: UIViewController {
         navBar.barTintColor = UIColor.clear
         setToolbarItems(toolbarItems, animated: true)
         
+    }
+    
+    //MARK: - textfields responder methods
+    
+    //setup responder to pass from a textfield to another
+    func setupResponders(email:UITextField,password:UITextField) {
+        email.delegate = self
+        email.tag = 0
+        password.delegate = self
+        password.tag = 1
+        print("prima verifica mail e pwd: \(email) e \(password)")
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
