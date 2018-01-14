@@ -25,6 +25,7 @@
 		70B0EDB31FF3DD7D00EAACAD /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70B0EDB51FF3DD7D00EAACAD /* SVProgressHUD.framework */; };
 		70B0EDB71FF3DE1800EAACAD /* SagaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B0EDB61FF3DE1800EAACAD /* SagaTableViewController.swift */; };
 		70B0EDB91FF3EA9C00EAACAD /* UIModification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B0EDB81FF3EA9C00EAACAD /* UIModification.swift */; };
+		70F1316720029BAA0049AE85 /* VotedSagaByUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F1316620029BAA0049AE85 /* VotedSagaByUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		70B0EDB51FF3DD7D00EAACAD /* SVProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70B0EDB61FF3DE1800EAACAD /* SagaTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SagaTableViewController.swift; sourceTree = "<group>"; };
 		70B0EDB81FF3EA9C00EAACAD /* UIModification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIModification.swift; sourceTree = "<group>"; };
+		70F1316620029BAA0049AE85 /* VotedSagaByUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotedSagaByUser.swift; sourceTree = "<group>"; };
 		FAD3357A66AA165BD9A2CCF9 /* Pods_Rate_Saga.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rate_Saga.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -120,6 +122,7 @@
 			children = (
 				70082C4F1FF50D58004B7F03 /* SagaMovie.swift */,
 				70082C511FF556E5004B7F03 /* SagaList.swift */,
+				70F1316620029BAA0049AE85 /* VotedSagaByUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				70082C501FF50D58004B7F03 /* SagaMovie.swift in Sources */,
 				70B0ED9A1FF2D24400EAACAD /* ViewController.swift in Sources */,
 				70B0ED981FF2D24400EAACAD /* AppDelegate.swift in Sources */,
+				70F1316720029BAA0049AE85 /* VotedSagaByUser.swift in Sources */,
 				70082C541FF6362C004B7F03 /* SagaMoviesTableViewController.swift in Sources */,
 				70AC1D0D1FF69493009946CD /* LogoutViewController.swift in Sources */,
 				70082C521FF556E5004B7F03 /* SagaList.swift in Sources */,

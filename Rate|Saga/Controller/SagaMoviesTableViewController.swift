@@ -148,6 +148,9 @@ class SagaMoviesTableViewController: UITableViewModification {
     
     func saveVotes(movieItem:[SagaMovie]) {
         
+        //FIRST saving cicle
+        //here we save the votes to the sagaMovie node of the db
+        
         for i in 0...(countMovie - 1) {
             //dictionary containing every single element in the node of FB db
             let elements = ["name":movieItem[i].name,"saga":movieItem[i].saga,"title":movieItem[i].title,"votes":movieItem[i].votes] as [String : Any]
@@ -155,6 +158,18 @@ class SagaMoviesTableViewController: UITableViewModification {
             sagaMovieRef.child(movieItem[i].name).updateChildValues(elements)
         }
         
+        //SECOND saving cicle
+        //here we save the user and the saga he voted
+        
+        let votingDB = Database.database().reference().child("votedSagaByUser")
+        let votingDict = ["user": Auth.auth().currentUser?.email as Any, "saga": selectedSaga?.saga as Any, "voted": true] as [String : Any]
+        votingDB.childByAutoId().setValue(votingDict) { (error, reference) in
+            if error != nil {
+                print("error in saving userdata")
+            } else {
+                print("userdata saved check the db!")
+            }
+        }
         
 //        let elements = ["name":"Back to the Future","saga":"Back to the Future","title":"Back to the Future","votes":100] as [String : Any]
 //        sagaMovieRef.child("Back to the Future I").updateChildValues(elements)

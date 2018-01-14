@@ -14,30 +14,51 @@ class SagaTableViewController: UITableViewModification {
     
     @IBOutlet weak var navBarTitle: UINavigationItem!
     
+    let user = Auth.auth().currentUser?.email
     let sagaListRef:DatabaseReference = Database.database().reference().child("sagasList")
-    
+    let votedDB:DatabaseReference = Database.database().reference().child("votedSagaByUser")
+
     var sagaListItems:[SagaList] = []
+    var votedSagaListByUsers:[VotedSagaByUser] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navBarTitle.title = "Saga|List"
         transparentBackgroundController()
-
-//        print("inizio caricamento saghe")
+        
+        let queryVotedDB = votedDB.queryOrdered(byChild: "user").queryEqual(toValue: user)
+        queryVotedDB.observe(.value) { (votedSagaSnapShot) in
+            self.votedSagaListByUsers.removeAll()
+            for items in votedSagaSnapShot.children {
+                print("ok \(items)==================")
+                let countArray = self.votedSagaListByUsers.count
+                let votedSagaList = items as! DataSnapshot
+                let votedSagaByUser = VotedSagaByUser(snapshotName: votedSagaList)
+                self.votedSagaListByUsers.append(votedSagaByUser)
+                
+                print("CONTEGGIO elementi array: \(self.votedSagaListByUsers.count)")
+                print("COSA CARICA: \(self.votedSagaListByUsers[countArray].saga)")
+                print("=============================")
+            }
+            self.tableView.reloadData()
+            print("DATA REALOADED VOTED")
+        }
+        
         //codice tratto da testFirebase di HidranArias
         //listener asincrono
         sagaListRef.observe(.value) { (dataSnapShot) in
+            print("OBSERVE SAGALISTITEMS")
             self.sagaListItems.removeAll()
             for item in dataSnapShot.children {
                 let sagaList = item as! DataSnapshot
                 let saga = SagaList(sagaName: sagaList)
                 self.sagaListItems.append(saga)
-//                print("ecco la saga \(saga.saga)")
             }
             self.tableView.reloadData()
+            print("DATA REALOADED SAGALIST")
         }
     }
-
+    
     // MARK: - Tableview data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -54,10 +75,28 @@ class SagaTableViewController: UITableViewModification {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         let saga = sagaListItems[indexPath.row]
-        cell.textLabel?.text = saga.saga
+        let votedArray = votedSagaListByUsers.count
+        print("CONTEGGIO VOTED: \(sagaListItems.count)")
+
+        print("CONTEGGIO VOTED: \(votedSagaListByUsers.count)")
+        if votedArray != 0  {
+            for i in 0...votedSagaListByUsers.count-1 {
+                print("SCRIVO IL VALORE di votedSagaList: \(votedSagaListByUsers[i].saga)")
+                print("SCRIVO IL VALORE di saga: \(saga.saga)")
+                if saga.saga == votedSagaListByUsers[i].saga {
+                    cell.textLabel?.textColor = UIColor.flatGray()
+                }
+            }
+        }
         
+        cell.textLabel?.text = saga.saga
+//        cell.textLabel?.textColor = UIColor.flatGray()
+//        if saga.saga != votedSagaListByUsers[countArray-1].saga {
+//            cell.textLabel?.textColor = UIColor.white
+//        }
         return cell
     }
+    
     
     //MARK: - Tableview delegate methods
     
