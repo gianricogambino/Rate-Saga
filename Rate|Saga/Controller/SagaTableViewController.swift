@@ -26,28 +26,23 @@ class SagaTableViewController: UITableViewModification {
         navBarTitle.title = "Saga|List"
         transparentBackgroundController()
         
+        //retrieve data regarding voted sagas
+        
         let queryVotedDB = votedDB.queryOrdered(byChild: "user").queryEqual(toValue: user)
         queryVotedDB.observe(.value) { (votedSagaSnapShot) in
             self.votedSagaListByUsers.removeAll()
             for items in votedSagaSnapShot.children {
-                print("ok \(items)==================")
-                let countArray = self.votedSagaListByUsers.count
                 let votedSagaList = items as! DataSnapshot
                 let votedSagaByUser = VotedSagaByUser(snapshotName: votedSagaList)
                 self.votedSagaListByUsers.append(votedSagaByUser)
-                
-                print("CONTEGGIO elementi array: \(self.votedSagaListByUsers.count)")
-                print("COSA CARICA: \(self.votedSagaListByUsers[countArray].saga)")
-                print("=============================")
             }
             self.tableView.reloadData()
-            print("DATA REALOADED VOTED")
         }
         
         //codice tratto da testFirebase di HidranArias
         //listener asincrono
+        
         sagaListRef.observe(.value) { (dataSnapShot) in
-            print("OBSERVE SAGALISTITEMS")
             self.sagaListItems.removeAll()
             for item in dataSnapShot.children {
                 let sagaList = item as! DataSnapshot
@@ -55,7 +50,6 @@ class SagaTableViewController: UITableViewModification {
                 self.sagaListItems.append(saga)
             }
             self.tableView.reloadData()
-            print("DATA REALOADED SAGALIST")
         }
     }
     
@@ -76,13 +70,10 @@ class SagaTableViewController: UITableViewModification {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         let saga = sagaListItems[indexPath.row]
         let votedArray = votedSagaListByUsers.count
-        print("CONTEGGIO VOTED: \(sagaListItems.count)")
 
-        print("CONTEGGIO VOTED: \(votedSagaListByUsers.count)")
+        // if the votedSagaListByUsers array isn't empty the i row should be gray if is a voted saga
         if votedArray != 0  {
             for i in 0...votedSagaListByUsers.count-1 {
-                print("SCRIVO IL VALORE di votedSagaList: \(votedSagaListByUsers[i].saga)")
-                print("SCRIVO IL VALORE di saga: \(saga.saga)")
                 if saga.saga == votedSagaListByUsers[i].saga {
                     cell.textLabel?.textColor = UIColor.flatGray()
                 }
@@ -90,10 +81,6 @@ class SagaTableViewController: UITableViewModification {
         }
         
         cell.textLabel?.text = saga.saga
-//        cell.textLabel?.textColor = UIColor.flatGray()
-//        if saga.saga != votedSagaListByUsers[countArray-1].saga {
-//            cell.textLabel?.textColor = UIColor.white
-//        }
         return cell
     }
     

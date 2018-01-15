@@ -51,7 +51,6 @@ class UIModification: UIViewController, UITextFieldDelegate {
         email.tag = 0
         password.delegate = self
         password.tag = 1
-        print("prima verifica mail e pwd: \(email) e \(password)")
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
