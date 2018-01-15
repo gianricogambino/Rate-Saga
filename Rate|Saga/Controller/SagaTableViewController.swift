@@ -18,8 +18,8 @@ class SagaTableViewController: UITableViewModification {
     let sagaListRef:DatabaseReference = Database.database().reference().child("sagasList")
     let votedDB:DatabaseReference = Database.database().reference().child("votedSagaByUser")
 
-    var sagaListItems:[SagaList] = []
-    var votedSagaListByUsers:[VotedSagaByUser] = []
+    var sagaListItems:[Saga] = []
+    var votedSagaListByUsers:[Saga] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class SagaTableViewController: UITableViewModification {
             self.votedSagaListByUsers.removeAll()
             for items in votedSagaSnapShot.children {
                 let votedSagaList = items as! DataSnapshot
-                let votedSagaByUser = VotedSagaByUser(snapshotName: votedSagaList)
+                let votedSagaByUser = Saga(snapshotName: votedSagaList)
                 self.votedSagaListByUsers.append(votedSagaByUser)
             }
             self.tableView.reloadData()
@@ -46,7 +46,7 @@ class SagaTableViewController: UITableViewModification {
             self.sagaListItems.removeAll()
             for item in dataSnapShot.children {
                 let sagaList = item as! DataSnapshot
-                let saga = SagaList(sagaName: sagaList)
+                let saga = Saga(sagasList: sagaList)
                 self.sagaListItems.append(saga)
             }
             self.tableView.reloadData()

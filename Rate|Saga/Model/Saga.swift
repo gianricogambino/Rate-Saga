@@ -40,7 +40,7 @@ class Saga {
         self.saga = name
     }
     
-    init(sagaName sagaData:DataSnapshot) {
+    init(sagasList sagaData:DataSnapshot) {
         let sagaItem = sagaData.value as! [String:Any]
         saga = sagaItem["name"] as? String ?? "saga error"
     }

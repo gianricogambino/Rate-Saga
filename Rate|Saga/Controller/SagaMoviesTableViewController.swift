@@ -17,14 +17,14 @@ class SagaMoviesTableViewController: UITableViewModification {
     // used to count how many movies are present in the selected saga
     var countMovie:Int = 0
     // array of Movie of class SagaMovie
-    var movieListItems:[SagaMovie] = []
+    var movieListItems:[Saga] = []
     // IBOutlet unusefull - delete?
     @IBOutlet weak var navBarTitle: UINavigationItem!
     @IBOutlet weak var voteButton: UIBarButtonItem!
     @IBOutlet weak var madeYourListButton: UIBarButtonItem!
     
     //retrieve selected saga from class SagaTableViewControll
-    var selectedSaga: SagaList? {
+    var selectedSaga: Saga? {
         didSet {
             // 1 - launch loadMovies method to create the list
             loadMovies()
@@ -132,7 +132,7 @@ class SagaMoviesTableViewController: UITableViewModification {
             self.movieListItems.removeAll()
             for item in dataSnapshot.children {
                 let movieList = item as! DataSnapshot
-                let movie = SagaMovie(sagaItems: movieList)
+                let movie = Saga(sagaItems: movieList)
                 // the if statement tells tht only the movies corresponding to the selectedSaga
                 // will be visualized and appendend to the movieListItem array
                 if movie.saga == self.selectedSaga?.saga {
@@ -146,7 +146,7 @@ class SagaMoviesTableViewController: UITableViewModification {
     
     // 5 - saving methods
     
-    func saveVotes(movieItem:[SagaMovie]) {
+    func saveVotes(movieItem:[Saga]) {
         
         //FIRST saving cicle
         //here we save the votes to the sagaMovie node of the db
@@ -170,38 +170,5 @@ class SagaMoviesTableViewController: UITableViewModification {
                 print("userdata saved check the db!")
             }
         }
-        
-//        let elements = ["name":"Back to the Future","saga":"Back to the Future","title":"Back to the Future","votes":100] as [String : Any]
-//        sagaMovieRef.child("Back to the Future I").updateChildValues(elements)
-        
-        
-//        let key = ref.child("posts").childByAutoId().key
-//        let post = ["uid": userID,
-//                    "author": username,
-//                    "title": title,
-//                    "body": body]
-//        let childUpdates = ["/posts/\(key)": post,
-//                            "/user-posts/\(userID)/\(key)/": post]
-//        ref.updateChildValues(childUpdates)
-        
-        
-//
-//
-//            //TODO: Send the message to Firebase and save it in our database
-//
-//            let messageDB = Database.database().reference().child("Messages")
-//            let messageDictionary = ["Sender":Auth.auth().currentUser?.email,"MessageBody":messageTextfield.text]
-//            messageDB.childByAutoId().setValue(messageDictionary) {
-//                (error, reference) in
-//                if error != nil {
-//                    print(error!)
-//                } else {
-//                    print("message saved successfully")
-//                    self.messageTextfield.isEnabled = true
-//                    self.sendButton.isEnabled = true
-//                    self.messageTextfield.text = ""
-//                }
-//            }
     }
-    
 }
