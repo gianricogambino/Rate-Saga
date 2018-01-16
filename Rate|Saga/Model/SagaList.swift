@@ -10,15 +10,15 @@ import Foundation
 import Firebase
 
 class SagaList {
-    var saga: String
-    
-    init(name:String) {
-        self.saga = name
-    }
-    
-    init(sagaName sagaData:DataSnapshot) {
-        let sagaItem = sagaData.value as! [String:Any]
-        saga = sagaItem["name"] as? String ?? "saga error"
-    }
+//    var saga: String
+//    
+//    init(name:String) {
+//        self.saga = name
+//    }
+//    
+//    init(sagaName sagaData:DataSnapshot) {
+//        let sagaItem = sagaData.value as! [String:Any]
+//        saga = sagaItem["name"] as? String ?? "saga error"
+//    }
 }
 
