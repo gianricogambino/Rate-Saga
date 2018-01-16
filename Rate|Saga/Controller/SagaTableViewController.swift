@@ -97,4 +97,5 @@ class SagaTableViewController: UITableViewModification {
             destinationVC.selectedSaga = sagaListItems[indexPath.row]
         }
     }
+    
 }

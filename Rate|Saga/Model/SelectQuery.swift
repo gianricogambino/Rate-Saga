@@ -10,21 +10,24 @@ import Foundation
 import Firebase
 
 class SelectQuery:NSObject {
-//    let databaseReference:DatabaseReference
-//    let databaseQuery:DatabaseQuery
-//    var arrayData:[Any]
-//    var classType:AnyClass
-//    
-//    init(reference:DatabaseReference,array:[Any], classType: AnyClass) {
-//        self.arrayData = array
-//        reference.observe(.value) { (dataSnapShot) in
-//            self.arrayData.removeAll()
-//            for item in dataSnapShot.children {
-//                let listSnapshot = item as! DataSnapshot
-//                let personalClass = classType (snapshotName: listSnapshot)
-//                self.sagaListItems.append(personalClass)
+//    var databaseReference:DatabaseReference
+//    //var databaseQuery:DatabaseQuery
+//    var snapshotData:DataSnapshot
+//    var arrayData:[Saga]
+//
+//    init(reference:DatabaseReference, snapshot:DataSnapshot) {
+//
+//        databaseReference = reference
+//        snapshotData = snapshot
+//        arrayData = []
+//
+//        databaseReference.observe(.value) {(snapshotData) in
+//            //self.arrayData.removeAll()
+//            for item in snapshotData.children {
+//                let listItem = item as! DataSnapshot
+//                let saga = Saga(sagasList: listItem)
+//                //self.arrayData.append(saga)
 //            }
 //        }
 //    }
-    
 }

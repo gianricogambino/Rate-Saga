@@ -16,6 +16,17 @@ class Saga {
     var votes: Int = 0
     var user: String = ""
     var voted: Bool = true
+    
+    //MARK: - Sagas initialization
+    
+    init(name:String) {
+        self.saga = name
+    }
+    
+    init(sagasList sagaData:DataSnapshot) {
+        let sagaItem = sagaData.value as! [String:Any]
+        saga = sagaItem["name"] as? String ?? "saga error"
+    }
 
     //MARK: - Movies initialization
     
@@ -34,18 +45,7 @@ class Saga {
         votes = sagaItem["votes"] as? Int ?? 0
     }
     
-    //MARK: - Sagas initialization
-
-    init(name:String) {
-        self.saga = name
-    }
-    
-    init(sagasList sagaData:DataSnapshot) {
-        let sagaItem = sagaData.value as! [String:Any]
-        saga = sagaItem["name"] as? String ?? "saga error"
-    }
-    
-    //MARK: - Saga Voted by User initialization
+    //MARK: - Saga Voted by User initialization_
     
     init(name:String,mail:String,voted:Bool) {
         self.saga = name
