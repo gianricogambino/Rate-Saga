@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 
 class VotedSagaByUser {
-    var saga: String
+ //   var saga: String
 //    var user: String
 //    var voted: Bool
 //    

@@ -16,6 +16,7 @@ class SagaMoviesTableViewController: UITableViewModification {
     let sagaMovieRef:DatabaseReference = Database.database().reference().child("sagas")
     // used to count how many movies are present in the selected saga
     var countMovie:Int = 0
+    var expressedVote:Int = 0
     // array of Movie of class SagaMovie
     var movieListItems:[Saga] = []
     // IBOutlet unusefull - delete?
@@ -28,7 +29,18 @@ class SagaMoviesTableViewController: UITableViewModification {
         didSet {
             // 1 - launch loadMovies method to create the list
             loadMovies()
+            var votedMovie: Saga? {
+                didSet {
+                    print(votedMovie?.voted as Any)
+                    print("prima di editMode()")
+                    guard votedMovie?.voted != false else {
+                        editMode()
+                        return
+                    }
+                }
+            }
         }
+        
     }
 
     override func viewDidLoad() {
@@ -71,14 +83,17 @@ class SagaMoviesTableViewController: UITableViewModification {
     // MARK: - voting methods
     
     // 4 - user pressed VOTE button
-    @IBAction func voteButtonPressed(_ sender: UIBarButtonItem) {
-        
+    @IBAction func voteButtonPressed(_ sender: Any) {
+        editMode()
+    }
+    
+    func editMode() {
         // if isEditing is true isn't possible to vote the guard statement checks that condition
         guard tableView.isEditing else {
             
             for i in 0...(countMovie - 1) {
                 //vote = numberOfElements - numberInThearray
-                let expressedVote = countMovie - i
+                expressedVote = countMovie - i
                 //new sum of the previous values with the newone
                 movieListItems[i].votes = movieListItems[i].votes + expressedVote
             }

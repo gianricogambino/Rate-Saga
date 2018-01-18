@@ -92,10 +92,17 @@ class SagaTableViewController: UITableViewModification {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         let destinationVC = segue.destination as! SagaMoviesTableViewController
         if let indexPath = tableView.indexPathForSelectedRow{
             destinationVC.selectedSaga = sagaListItems[indexPath.row]
+//            if votedSagaListByUsers.count != 0  {
+//                for i in 0...votedSagaListByUsers.count-1 {
+//                    if sagaListItems[indexPath.row].saga == votedSagaListByUsers[i].saga {
+//                        destinationVC.votedMovie = votedSagaListByUsers[i]
+//                    }
+//                }
+//            }
         }
     }
-    
 }
